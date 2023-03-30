@@ -1,6 +1,5 @@
 <?php
 include 'functions.php';
-include 'btnfunctions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +13,7 @@ include 'btnfunctions.php';
 	<link rel="stylesheet" href="../style/responsive/exam.css">
 </head>
 
-<body>
+<body method="POST" name="body">
 	<main>
 		<!---MAIN SECTION-->
 		<div class="aside-container">
@@ -38,6 +37,7 @@ include 'btnfunctions.php';
 			<div><progress min="0" value="60" max="100"></progress></div>
 			<div class="cover-container">
 				<div class="button-container">
+					<form action="" method="POST">
 					<?php 
 					$btnQuery = new Quiz();
 					$fetch = $btnQuery->btn();
@@ -46,13 +46,14 @@ include 'btnfunctions.php';
 						echo "<input type='submit' name=button id='submit' class='button' value='$id'>";
 					}
 					?>
+					</form>
 				</div>
 				<div class="buttons">
 					<button class="button-click red">Previous</button>
 					<button class="button-click green">Next</button>
 				</div>
 				<?php
-				include("examDisplay.php");
+				include 'btnFunctions.php';
 				?>
 			</div>
 		</div>
@@ -60,7 +61,6 @@ include 'btnfunctions.php';
 	</main>
 </body>
 <!-- 	LINKING ALL SCRIIPT TOGETHER -->
-	<script src="../src/jquery/jquery.js"></script>
-	<script src="../src/ajax/nxtQuestion.js"></script>
-	<script src="../src/timer.js"></script>
+
+
 </html>

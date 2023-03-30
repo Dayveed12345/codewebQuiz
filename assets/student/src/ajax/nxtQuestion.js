@@ -1,16 +1,14 @@
 $(document).ready(function () {
-	var sub = $('.button');
-	sub.click(function (e) {
-		e.preventDefault();
+	$('.button').click(function () {
+		var sub = $('.button');
 		$.ajax({
-			type: "POST",
 			url: "btnFunctions.php",
+			method: "POST",
 			data: {
 				sub:sub
 			},
-			dataType: "JSON",
-			success: function (response) {
-				alert(response);
+			success: function (data) {
+				alert(data);
 			},
 			error: function () {
 				alert("an error occured");
