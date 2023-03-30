@@ -43,7 +43,7 @@ include 'btnfunctions.php';
 					$fetch = $btnQuery->btn();
 					while ($row = $fetch->fetch()) {
 						$id = $row['id'];
-						echo "<input type='submit' id='submit' class='button' value='$id'>";
+						echo "<input type='submit' name=button id='submit' class='button' value='$id'>";
 					}
 					?>
 				</div>
@@ -58,7 +58,9 @@ include 'btnfunctions.php';
 		</div>
 		</div>
 	</main>
-	<script src="../src/timer.js"></script>
 </body>
-
+<!-- 	LINKING ALL SCRIIPT TOGETHER -->
+	<script src="../src/jquery/jquery.js"></script>
+	<script src="../src/ajax/nxtQuestion.js"></script>
+	<script src="../src/timer.js"></script>
 </html>
