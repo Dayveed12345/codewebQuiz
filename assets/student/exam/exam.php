@@ -43,7 +43,7 @@ include 'btnfunctions.php';
 					$fetch = $btnQuery->btn();
 					while ($row = $fetch->fetch()) {
 						$id = $row['id'];
-						echo "<input type='text'  name='button' class='button' value='$id' disabled>";
+						echo "<input type='submit' id='submit' class='button' value='$id'>";
 					}
 					?>
 				</div>
