@@ -38,7 +38,7 @@ include 'functions.php';
 			<div class="cover-container">
 				<div class="button-container">
 					<form action="" method="POST">
-					<?php ajdhjashdfjhk
+					<?php 
 					$btnQuery = new Quiz();
 					$fetch = $btnQuery->btn();
 					while ($row = $fetch->fetch()) {
