@@ -37,30 +37,33 @@ include 'functions.php';
 			<div><progress min="0" value="60" max="100"></progress></div>
 			<div class="cover-container">
 				<div class="button-container">
-					<form action="" method="POST">
-					<?php 
+					<?php
 					$btnQuery = new Quiz();
 					$fetch = $btnQuery->btn();
 					while ($row = $fetch->fetch()) {
 						$id = $row['id'];
-						echo "<input type='submit' name=button id='submit' class='button' value='$id'>";
+						echo "<input type='submit' name=button id='$id' class='' value='$id'>";
 					}
 					?>
-					</form>
 				</div>
-				<div class="buttons">
-					<button class="button-click red">Previous</button>
-					<button class="button-click green">Next</button>
+				<!-- <div class="buttons">
+					<input id="inc" name="increment" style="display:none;" type=text>
+					<input class="button-click red" id="previous" name=prev type=submit value="Previous">
+					<input class="button-click green" id="next" name=next type=submit value="Next">
+				</div> -->
+				<div id="html">
+					<?php
+					 include 'btnFunctions.php';
+					?>
 				</div>
-				<?php
-				include 'btnFunctions.php';
-				?>
 			</div>
 		</div>
 		</div>
 	</main>
 </body>
 <!-- 	LINKING ALL SCRIIPT TOGETHER -->
-
+<script src=../src/jquery/jquery-3.6.3.min.js></script>
+<script src=../src/timer.js></script>
+<!-- <script src=../src/function.js></script> -->
 
 </html>
