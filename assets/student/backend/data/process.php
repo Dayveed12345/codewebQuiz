@@ -1,8 +1,8 @@
 <?php
 include 'dbclass.php';
-class processQuery extends Database{
+class processQuery{
 	public function query($sql){
-		$query=new Database();
+		$query=new Data();
 		$stmt=$query->connect_sql();
 		$stmt1=$stmt->prepare($sql);
 		return $stmt1;

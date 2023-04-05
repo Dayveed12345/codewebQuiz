@@ -1,8 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
 <?php
 include 'functions.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
 	<meta charset="UTF-8">
@@ -13,7 +13,7 @@ include 'functions.php';
 	<link rel="stylesheet" href="../style/responsive/exam.css">
 </head>
 
-<body method="POST" name="body">
+<body>
 	<main>
 		<!---MAIN SECTION-->
 		<div class="aside-container">
@@ -34,30 +34,65 @@ include 'functions.php';
 		<div class="flex-container">
 			<h2>MySql</h2>
 			<p id="timer"></p>
-			<div><progress min="0" value="60" max="100"></progress></div>
+			<div><progress min="0" value="60" id="prog" max="100"></progress></div>
 			<div class="cover-container">
 				<div class="button-container">
 					<?php
-					$btnQuery = new Quiz();
-					$fetch = $btnQuery->btn();
+					$showQuery = new Quiz();
+					$fetch = $showQuery->btn();
 					while ($row = $fetch->fetch()) {
 						$id = $row['id'];
-						echo "<input type='submit' name=button id='$id' class='' value='$id'>";
+						echo "<a href='#$id'><input class='button' value='$id' style=text-align:center></a>";
 					}
 					?>
 				</div>
-				<!-- <div class="buttons">
+			</div>
+			<!-- <div class="buttons">
 					<input id="inc" name="increment" style="display:none;" type=text>
 					<input class="button-click red" id="previous" name=prev type=submit value="Previous">
 					<input class="button-click green" id="next" name=next type=submit value="Next">
 				</div> -->
-				<div id="html">
-					<?php
-					 include 'btnFunctions.php';
-					?>
-				</div>
-			</div>
-		</div>
+
+			<?php
+			$showQuery = new Quiz();
+			$fetch = $showQuery->query();
+			while ($row = $fetch->fetch()) {
+				$id = $row['id'];
+				$questionid = $row['question_id'];
+				$course = $row['course'];
+				$question = $row['question'];
+				$answer = $row['answer'];
+				$wrong1 = $row['wrong1'];
+				$wrong2 = $row['wrong2'];
+				$wrong3 = $row['wrong3'];
+				$answer = "<label class='label1'>
+				<input id='opt' name='$id' class='input1 ' value='1' type='radio'>$answer</label>
+				";
+				$wrongArrayEl1 = "
+							<label class='label2'>
+							<input id='opt2' name='$id' class='input2' value='2' type='radio'>$wrong1</label>";
+				$wrongArrayEl2 = "
+							<label class='label3'><input id='opt3' name='$id' class='input3' value='2' type='radio'>$wrong2</label>";
+				$wrongArrayEl3 = "
+							<label class='label4'><input id='opt4' name='$id' class='input4' value='2' type='radio'>$wrong3</label>";
+				$totalArray = [$answer, $wrongArrayEl1, $wrongArrayEl2, $wrongArrayEl3];
+				shuffle($totalArray);
+
+
+				// echo "<p class='top'><b>$id out of 100</b></p>;
+				echo "<div> 
+					<div class='options'>";
+				echo "<p id='$id'>$id. $question</p>
+							<div class='option-cover'>";
+				foreach ($totalArray as $total) {
+					echo $total;
+				}
+
+				echo "	</div>
+						 </div>
+						 </div>";
+			}
+			?>
 		</div>
 	</main>
 </body>

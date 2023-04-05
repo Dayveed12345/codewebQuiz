@@ -7,26 +7,20 @@ class Quiz{
 	public $execute;
 	private $query;
 	private $prepare;
-public function btnChange($sql){
-$this->processQuery= new processQuery();
-$this->execute=$this->processQuery->query("SELECT * FROM questionbox where id ='?'");
-return $this->execute->execute([$sql]);
-}
 public function query(){
 $this->processQuery= new processQuery();
 $this->query="SELECT * FROM questionbox  ORDER BY rand()";
 $this->prepare=$this->processQuery->query($this->query);
-$this->prepare->execute([]);
-return $this->prepare;
-}
-public function btn(){
-$this->processQuery= new processQuery();
-$this->query="SELECT * FROM questionbox ORDER BY rand()";
-$this->prepare=$this->processQuery->query($this->query);
 $this->prepare->execute();
 return $this->prepare;
 }
+public function btn(){
+	$this->processQuery= new processQuery();
+	$this->query="SELECT * FROM questionbox";
+	$this->prepare=$this->processQuery->query($this->query);
+	$this->prepare->execute();
+	return $this->prepare;
+	}
 }
-
 
 ?>
