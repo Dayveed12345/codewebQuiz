@@ -34,7 +34,7 @@ include 'functions.php';
 		<div class="flex-container">
 			<h2>MySql</h2>
 			<p id="timer"></p>
-			<div><progress min="0" value="60" id="prog" max="100"></progress></div>
+			<div><progress min="0" id="prog" max="4"></progress></div>
 			<div class="cover-container">
 				<div class="button-container">
 					<?php
@@ -66,15 +66,15 @@ include 'functions.php';
 				$wrong2 = $row['wrong2'];
 				$wrong3 = $row['wrong3'];
 				$answer = "<label class='label1'>
-				<input id='opt' name='$id' class='input1 ' value='1' type='radio'>$answer</label>
+				<input id='opt' name='$id' class='input1 checking ' value='1' type='radio'>$answer</label>
 				";
 				$wrongArrayEl1 = "
 							<label class='label2'>
-							<input id='opt2' name='$id' class='input2' value='2' type='radio'>$wrong1</label>";
+							<input id='opt2' name='$id' class='input2 checking'  onclick='progress()'value='2' type='radio'>$wrong1</label>";
 				$wrongArrayEl2 = "
-							<label class='label3'><input id='opt3' name='$id' class='input3' value='2' type='radio'>$wrong2</label>";
+							<label class='label3'><input id='opt3' name='$id'  onclick='progress()' class='input3 checking' value='2' type='radio'>$wrong2</label>";
 				$wrongArrayEl3 = "
-							<label class='label4'><input id='opt4' name='$id' class='input4' value='2' type='radio'>$wrong3</label>";
+							<label class='label4'><input id='opt4' name='$id'  onclick='progress()' class='input4 checking' value='2' type='radio'>$wrong3</label>";
 				$totalArray = [$answer, $wrongArrayEl1, $wrongArrayEl2, $wrongArrayEl3];
 				shuffle($totalArray);
 
@@ -99,6 +99,6 @@ include 'functions.php';
 <!-- 	LINKING ALL SCRIIPT TOGETHER -->
 <script src=../src/jquery/jquery-3.6.3.min.js></script>
 <script src=../src/timer.js></script>
-<!-- <script src=../src/function.js></script> -->
+<script src=../src/function.js></script>
 
 </html>
