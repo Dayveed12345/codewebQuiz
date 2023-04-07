@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+session_start();
 include 'functions.php';
 ?>
 
@@ -22,9 +23,9 @@ include 'functions.php';
 					<img src="../../../sample.png" alt="Student profile Picture ">
 				</div>
 				<div class="text-container">
-					<h3>Jonathan David</h3>
-					<h4>MySql</h4>
-					<h4>Student ID:13573ghdshj</h4>
+					<h3><?php echo $_SESSION['fn']." ".$_SESSION['ln'];?></h3>
+					<h4><?php echo $_SESSION['cn'];?></h4>
+					<h4>Student ID: <?php echo $_SESSION['cID'];?></h4>
 				</div>
 
 			</div>
@@ -32,9 +33,9 @@ include 'functions.php';
 			<div class="footer-sidebar" id="time">powered by codeweb</div>
 		</div>
 		<div class="flex-container">
-			<h2>MySql</h2>
+			<h2> <?php echo $_SESSION['cn'];?></h2>
 			<p id="timer"></p>
-			<div><progress min="0" id="prog" max="4"></progress></div>
+			<div><progress min="1" id="prog" max="2"></progress></div>
 			<div class="cover-container">
 				<div class="button-container">
 					<?php
@@ -42,7 +43,7 @@ include 'functions.php';
 					$fetch = $showQuery->btn();
 					while ($row = $fetch->fetch()) {
 						$id = $row['id'];
-						echo "<a href='#$id'><input class='button' value='$id' style=text-align:center></a>";
+						echo "<a href='#$id'><input type=submit class='button' value='$id' style=text-align:center></a>";
 					}
 					?>
 				</div>
@@ -58,7 +59,7 @@ include 'functions.php';
 			$fetch = $showQuery->query();
 			while ($row = $fetch->fetch()) {
 				$id = $row['id'];
-				$questionid = $row['question_id'];
+				$questionid = $row['course_id'];
 				$course = $row['course'];
 				$question = $row['question'];
 				$answer = $row['answer'];
