@@ -6,6 +6,7 @@
 -- Generation Time: Apr 06, 2023 at 11:03 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
+CREATE DATABASE codequiz;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
