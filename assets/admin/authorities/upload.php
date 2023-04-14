@@ -51,6 +51,9 @@
 										<a class="a" href="leaderboard/MySql.html">
 											<li>MySql</li>
 										</a>
+										<a class="a" href="leaderboard/MySql.html">
+											<li style="color:white;">Score-sheet</li>
+										</a>
 									</div>
 								</ul>
 							</div>

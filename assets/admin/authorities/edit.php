@@ -51,6 +51,9 @@
 										<a class="a" href="leaderboard/MySql.html">
 											<li>MySql</li>
 										</a>
+										<a class="a" href="leaderboard/MySql.html">
+											<li style="color:white;">Score-sheet</li>
+										</a>
 									</div>
 								</ul>
 							</div>
@@ -91,7 +94,7 @@
 						<input type='text' name='' id='wrong3' placeholder='$wrong3'>
 						<input type='submit' id='updt' class=submit value='Update'>";
 						}
-					}else{
+					} else {
 						$object = new Quiz();
 						$fetch = $object->edit(1);
 						while ($row = $fetch->fetch()) {

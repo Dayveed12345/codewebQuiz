@@ -53,7 +53,7 @@ class Quiz
 	public function score()
 	{
 		$this->processQuery = new processQuery();
-		$this->query = "SELECT * FROM scoresheet ";
+		$this->query = "SELECT * FROM scoresheet ORDER BY DESC ";
 		$this->prepare = $this->processQuery->query($this->query);
 		$this->prepare->execute();
 		return $this->prepare;
@@ -72,6 +72,13 @@ class Quiz
 		$this->query = "SELECT * FROM questionbox where id=? ";
 		$this->prepare = $this->processQuery->query($this->query);
 		$this->prepare->execute([$id]);
+		return $this->prepare;
+	}
+	public function insert_score($a,$b,$c,$d,$e,$f){
+		$this->processQuery = new processQuery();
+		$this->query = "INSERT INTO scoresheet (student_score,student_course,time_of_exam,course_id,firstName,lastName)VALUES(?,?,?,?,?,?)";
+		$this->prepare = $this->processQuery->query($this->query);
+		$this->prepare->execute([$a, $b, $c, $d, $e, $f]);
 		return $this->prepare;
 	}
 }
