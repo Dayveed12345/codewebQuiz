@@ -6,7 +6,8 @@ $(document).ready(function () {
 		var input2 = $('#input2').val();
 		var input3 = $('#input3').val();
 		var input4 = $('#input4').val();
-		if (input1 != '' && input2 != '' && input3 != '' && input4 != '') {
+		var input5=$('#input5').val();
+		if (input1 != '' && input2 != '' && input3 != '' && input4 != ''&&input5!='') {
 			$.ajax({
 				type: "POST",
 				url: "../../student/backend/control/studentProcess.php",
@@ -14,7 +15,8 @@ $(document).ready(function () {
 					input1: input1,
 					input2: input2,
 					input3: input3,
-					input4: input4
+					input4: input4,
+					input5:input5
 				},
 
 				dataType: "Json",
@@ -25,16 +27,19 @@ $(document).ready(function () {
 					$('#input2').attr('disabled', true)
 					$('#input3').attr('disabled', true)
 					$('#input4').attr('disabled', true)
+					$('#input5').attr('disabled', true)
 				},
 				success: function (response) {
 					$('#input1').attr('disabled', true);
 					$('#input2').attr('disabled', true);
 					$('#input3').attr('disabled', true);
 					$('#input4').attr('disabled', true);
+					$('#input5').attr('disabled', true)
 					$('#input1').val("");
 					$('#input2').val("");
 					$('#input3').val("");
 					$('#input4').val("");
+					$('#input5').val("");
 					if (response === 0) {
 						$('.pop-text').css({
 							"display": "flex",

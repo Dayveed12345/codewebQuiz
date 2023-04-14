@@ -35,7 +35,7 @@ include 'functions.php';
 		<div class="flex-container">
 			<h2> <?php echo $_SESSION['cn'];?></h2>
 			<p id="timer"></p>
-			<div><progress min="1" id="prog" max="2"></progress></div>
+			<div><progress min=0 id="prog"></progress></div>
 			<div class="cover-container">
 				<div class="button-container">
 					<?php
@@ -48,13 +48,10 @@ include 'functions.php';
 					?>
 				</div>
 			</div>
-			<!-- <div class="buttons">
-					<input id="inc" name="increment" style="display:none;" type=text>
-					<input class="button-click red" id="previous" name=prev type=submit value="Previous">
-					<input class="button-click green" id="next" name=next type=submit value="Next">
-				</div> -->
-
 			<?php
+			if(!$_SESSION['fn']&&!$_SESSION['ln']&&!$_SESSION['cID']&&!$_SESSION['cn']){
+				header('location:index.html');
+			}else{
 			$showQuery = new Quiz();
 			$fetch = $showQuery->query();
 			while ($row = $fetch->fetch()) {
@@ -67,15 +64,17 @@ include 'functions.php';
 				$wrong2 = $row['wrong2'];
 				$wrong3 = $row['wrong3'];
 				$answer = "<label class='label1'>
-				<input id='opt' name='$id' class='input1 checking ' value='1' type='radio'>$answer</label>
+				<input id='opt' name='$id' class='input1 checking ' onclick='progress()' value='1' type='radio'>$answer</label>
 				";
 				$wrongArrayEl1 = "
 							<label class='label2'>
 							<input id='opt2' name='$id' class='input2 checking'  onclick='progress()'value='2' type='radio'>$wrong1</label>";
 				$wrongArrayEl2 = "
-							<label class='label3'><input id='opt3' name='$id'  onclick='progress()' class='input3 checking' value='2' type='radio'>$wrong2</label>";
+							<label class='label3'>
+							<input id='opt3' name='$id'  onclick='progress()' class='input3 checking' value='2' type='radio'>$wrong2</label>";
 				$wrongArrayEl3 = "
-							<label class='label4'><input id='opt4' name='$id'  onclick='progress()' class='input4 checking' value='2' type='radio'>$wrong3</label>";
+							<label class='label4'>
+							<input id='opt4' name='$id'  onclick='progress()' class='input4 checking' value='2' type='radio'>$wrong3</label>";
 				$totalArray = [$answer, $wrongArrayEl1, $wrongArrayEl2, $wrongArrayEl3];
 				shuffle($totalArray);
 
@@ -93,7 +92,9 @@ include 'functions.php';
 						 </div>
 						 </div>";
 			}
+		}
 			?>
+			<button name="submit" id=result class='submit'>submit</button>
 		</div>
 	</main>
 </body>
@@ -101,5 +102,6 @@ include 'functions.php';
 <script src=../src/jquery/jquery-3.6.3.min.js></script>
 <script src=../src/timer.js></script>
 <script src=../src/function.js></script>
+<script src=../src/ajax/result.js></script>
 
 </html>

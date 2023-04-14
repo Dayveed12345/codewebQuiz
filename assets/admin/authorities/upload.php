@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,24 +5,24 @@ session_start();
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Student-Dashboard{}</title>
+	<title>Admin-Dashboard{}</title>
 	<link rel="stylesheet" href="../style/css/main.css">
-	<link rel="stylesheet" href="">
+	<!-- <link rel="stylesheet" href="../source/css/responsive/student-dashboard.css"> -->
 </head>
 
 <body>
 	<!-- HEADER SECTION -->
 	<main>
 		<div class="flex-container">
-			<div class="main-container">
+			<div class="main-container size">
 				<div class="logo">Logo</div>
 				<div class="nav">
 					<ul class="nav-list">
-						<a class="a b" href="view.html">
-							<l1 style="color:white">Home</l1>
+						<a class="a b " href="view.html">
+							<l1>Home</l1>
 						</a>
-						<a class="a b" href="upload.html">
-							<l1>Create Exam</l1>
+						<a class="a b " href="upload.html">
+							<l1 style="color:white;">Create Exam</l1>
 						</a>
 						<l1 class="show">Leaderboard<div class="imgdiv"><img class=arrow src="arrow.png"></div>
 							<div class="list-container">
@@ -61,37 +58,55 @@ session_start();
 					</ul>
 				</div>
 			</div>
-			<div class="body-container" >
-				<div class="container1" id="container">
-					<h3 class="text-name">Welcome, David</h3>
-					<form>
-						<input type="text" placeholder="question-id" class="questions">
-					</form>
-					<?php
-					// include '../backend/database/function.php';
-					
-					?>
+			<div class="body-container">
+				<div class="container1">
+					<h3 class="text-name float">Welcome, David</h3>
 				</div>
+				<form>
+					<div class="question">
+						<input type="text" name="" placeholder="course-id" id="cId">
+						<input type="text" name="" placeholder="course-name" id="cNm">
+
+					</div>
+					<input type="text" name="" placeholder="question" id="question">
+					<input type="text" name="" placeholder="Answer" id="input1">
+					<input type="text" name="" placeholder="2nd Option" id="input2">
+					<input type="text" name="" placeholder="3rd Option" id="input3">
+					<input type="text" name="" placeholder="4th Option" id="input4">
+				</form>
+				<input class="submit mg-l" type="submit" id=submit value="update">
 			</div>
 		</div>
 		<div class="aside-container">
 			<div class="img-holder">
+				<img src="../../sample.png" class=profile alt="student profile picture">
 			</div>
 			<div class="menu-container">
 				<div class="menu-list">
 					<a href="../settings/password.html">password</a>
 				</div>
-				<div class="menu-list">
+				<!-- <div class="menu-list">
 					<a href="../settings/picture.html">picture</a>
-				</div>
+				</div> -->
 				<div class="menu-list">
 					<a href="../settings/username.html">username</a>
 				</div>
 			</div>
 		</div>
+		</div>
 	</main>
+	<!-- <div class="pop-text">
+		<div id="div">
+			<div class="question">
+				<input type="text" name="" class="modal" value placeholder="course-id" id="cId">
+				<input type="text" name="" class=modal value placeholder="course-name" id="cNm">
+
+			</div>
+			<button id='modal' class='ok'>OK</button>
+		</div>
+	</div> -->
 </body>
 <script src=../src/jquery/jquery-3.6.3.min.js></script>
-<script src="../src/ajax/view.js"></script>
+<script src="../src/ajax/upload.js"></script>
 
 </html>

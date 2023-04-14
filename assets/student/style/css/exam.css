@@ -172,14 +172,25 @@ label {
 	justify-content: space-between;
 }
 
-.button-click {
+.submit{
 	height: 40px;
 	width: 80px;
 	color: white;
-	border: none;
+	/* border: none; */
 	font-weight: bolder;
 	transition: .1s;
+	margin-top:10px;
+	border:2px outset grey;
+	background-color: green;
 	box-shadow: 1px 1px 5px 1px rgb(133, 131, 131);
+	float:right;
+}
+.submit:hover{
+	border:2px inset black;
+	box-shadow: none;
+	transition: .5s;
+	background-color: white;
+	color:green;
 }
 
 .button-click:hover {
