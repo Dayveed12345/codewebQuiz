@@ -1,3 +1,10 @@
+<?php
+session_start();
+include "../backend/database/function.php";
+if (!$_SESSION['user'] && !$_SESSION['pass']) {
+	header('location:../../../index.html');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +15,7 @@
 	<title>Student-Dashboard{}</title>
 	<link rel="stylesheet" href="../style/css/admin.css">
 	<link rel="stylesheet" href="../style/responsive/admin.css">
+	<link rel="stylesheet" href="letter.css">
 </head>
 
 <body>
@@ -18,129 +26,48 @@
 				<div class="logo">Logo</div>
 				<div class="nav">
 					<ul class="nav-list">
-						<a class="a b" href="view.html">
+						<a class="a b" href="view.php">
 							<l1>Home</l1>
 						</a>
-						<a class="a b" href="upload.html">
+						<a class="a b" href="upload.php">
 							<l1>Exam</l1>
 						</a>
-						<l1 class="show"style="color:white" >Leaderboard
-							<div class="list-container">
-								<ul class="hidden-list">
-									<a class="a" href="leaderboard/html.html">
-										<li>Html</li>
-									</a>
-									<a class="a" href="leaderboard/css.html">
-										<li>Css</li>
-									</a>
-									<a class="a" href="leaderboard/javascript.html">
-										<li>Javascript</li>
-									</a>
-									<a class="a" href="leaderboard/php.html">
-										<li>Php</li>
-									</a>
-									<a class="a" href="leaderboard/MySql.html">
-										<li>MySql</li>
-									</a>
-									<a class="a" href="leaderboard/MySql.html">
-										<li style="color:white;">Score-sheet</li>
-									</a>
-								</ul>
-							</div>
-						</l1>
+						<a class="a b" href="score-sheet.php">
+							<l1 style="color:white">Score-Sheet</li>
+						</a>
 					</ul>
 				</div>
 			</div>
 			<div class="body-container">
 				<div class="container1">
-					<h3 class="text-name">Welcome, David</h3>
+					<h3 class="text-name">Welcome, <?php echo strtoupper($_SESSION['user']) ?></h3>
 					<h3 class="text-name3">STUDENT SCORE</h3>
 				</div>
 				<!-- REMEMBER TO ADD A CLASS HERE  -->
-				<div class="search-button"><input type=search placeholder="search" ></div>
+				<div class="search-button"><input type=search placeholder="search"></div>
 				<div class="table-container">
-					<table>
-						<tr>
-							<th>Name</th>
-							<th>Course</th>
-							<th>Score</th>
-							<th>Time</th>
-						</tr>
-						<tr>
-							<td>Name</td>
-							<td>Course</td>
-							<td>Score</td>
-							<td>Time</td>
-						</tr>
-						<tr>
-							<td>Name</td>
-							<td>Course</td>
-							<td>Score</td>
-							<td>Time</td>
-						</tr>
-						<tr>
-							<td>Name</td>
-							<td>Course</td>
-							<td>Score</td>
-							<td>Time</td>
-						</tr>
-						<tr>
-							<td>Name</td>
-							<td>Course</td>
-							<td>Score</td>
-							<td>Time</td>
-						</tr>
-						<tr>
-							<td>Name</td>
-							<td>Course</td>
-							<td>Score</td>
-							<td>Time</td>
-						</tr>
-						<tr>
-							<td>Name</td>
-							<td>Course</td>
-							<td>Score</td>
-							<td>Time</td>
-						</tr>
-						<tr>
-							<td>Name</td>
-							<td>Course</td>
-							<td>Score</td>
-							<td>Time</td>
-						</tr>
-						<tr>
-							<td>Name</td>
-							<td>Course</td>
-							<td>Score</td>
-							<td>Time</td>
-						</tr>
-						<tr>
-							<td>Name</td>
-							<td>Course</td>
-							<td>Score</td>
-							<td>Time</td>
-						</tr>
+					<table id="table" class="table">
 					</table>
 				</div>
 			</div>
 		</div>
 		<div class="aside-container">
 			<div class="img-holder">
-				<img src="../../../sample.png" class=profile alt="student profile picture">
+			<?php echo strtoupper($_SESSION['user'][0])?>
 			</div>
 			<div class="menu-container">
 				<div class="menu-list">
-					<a href="../settings/password.html">password</a>
+					<a href="../settings/password.php">password</a>
 				</div>
 				<div class="menu-list">
-					<a href="../settings/picture.html">picture</a>
-				</div>
-				<div class="menu-list">
-					<a href="../settings/username.html">username</a>
+					<a href="../settings/username.php">username</a>
 				</div>
 			</div>
 		</div>
 	</main>
 </body>
+<script src="../src/jquery/jquery-3.6.3.min.js"></script>
+<script src="../src/ajax/scoresheet.js"></script>
+<script src="../src/ajax/search.js"></script>
 
 </html>

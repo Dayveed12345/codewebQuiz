@@ -53,15 +53,15 @@ class Quiz
 	public function score()
 	{
 		$this->processQuery = new processQuery();
-		$this->query = "SELECT * FROM scoresheet ORDER BY DESC ";
+		$this->query = "SELECT * FROM scoresheet ORDER BY id DESC ";
 		$this->prepare = $this->processQuery->query($this->query);
 		$this->prepare->execute();
 		return $this->prepare;
 	}
-	public function leaderboard($courses)
+	public function search($courses)
 	{
 		$this->processQuery = new processQuery();
-		$this->query = "SELECT * FROM scoresheet where student_course=? ORDER BY desc student_score ";
+		$this->query = "SELECT * FROM scoresheet where course_id like ?% && lastName like ?% $$  ORDER BY desc student_score ";
 		$this->prepare = $this->processQuery->query($this->query);
 		$this->prepare->execute([$courses]);
 		return $this->prepare;
@@ -79,6 +79,49 @@ class Quiz
 		$this->query = "INSERT INTO scoresheet (student_score,student_course,time_of_exam,course_id,firstName,lastName)VALUES(?,?,?,?,?,?)";
 		$this->prepare = $this->processQuery->query($this->query);
 		$this->prepare->execute([$a, $b, $c, $d, $e, $f]);
+		return $this->prepare;
+	}
+	
+	public function login_admin($c, $d)
+	{
+		$this->processQuery = new processQuery();
+		$this->execute = $this->processQuery->query("SELECT * FROM `admin` WHERE username= ? and pword= ?");
+		$this->execute->execute([$c, $d]);
+		return $this->execute->rowCount();
+	}
+	public function login_pass($c, $d)
+	{
+		$this->processQuery = new processQuery();
+		$this->execute = $this->processQuery->query("SELECT * FROM `admin` WHERE username= ? and pword= ?");
+		$this->execute->execute([$c, $d]);
+		return $this->execute->rowCount();
+	}
+	public function checking_name($pass,$uname){
+		$this->processQuery = new processQuery();
+		$this->query = "SELECT * FROM admin where pword=?  and username=?";
+		$this->prepare = $this->processQuery->query($this->query);
+		$this->prepare->execute([$pass,$uname]);
+		return $this->prepare;
+	}
+	public function update_pass($newpass,$oldpass,$uname){
+		$this->processQuery = new processQuery();
+		$this->query = "UPDATE admin SET pword=? where pword=?  and username=?";
+		$this->prepare = $this->processQuery->query($this->query);
+		$this->prepare->execute([$newpass,$oldpass,$uname]);
+		return $this->prepare;
+	}
+	public function oldpass($uname,$pass){
+		$this->processQuery = new processQuery();
+		$this->query = "SELECT * FROM admin where username=? and pword=?";
+		$this->prepare = $this->processQuery->query($this->query);
+		$this->prepare->execute([$uname,$pass]);
+		return $this->prepare->rowCount();
+	}
+	public function update_name($username,$uname,$pword){
+		$this->processQuery = new processQuery();
+		$this->query = "UPDATE admin SET username=? where username=?  and pword=?";
+		$this->prepare = $this->processQuery->query($this->query);
+		$this->prepare->execute([$username,$uname,$pword]);
 		return $this->prepare;
 	}
 }

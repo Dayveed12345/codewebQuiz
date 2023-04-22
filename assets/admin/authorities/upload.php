@@ -1,3 +1,10 @@
+<?php
+session_start();
+include "../backend/database/function.php";
+if (!$_SESSION['user'] && !$_SESSION['pass']) {
+	header('location:../../../index.html');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Admin-Dashboard{}</title>
 	<link rel="stylesheet" href="../style/css/main.css">
+	<link rel="stylesheet" href="letter.css">
 	<!-- <link rel="stylesheet" href="../source/css/responsive/student-dashboard.css"> -->
 </head>
 
@@ -18,81 +26,52 @@
 				<div class="logo">Logo</div>
 				<div class="nav">
 					<ul class="nav-list">
-						<a class="a b " href="view.html">
-							<l1>Home</l1>
+						<a class="a b " href="view.php">
+							<l1>View Questions</l1>
 						</a>
-						<a class="a b " href="upload.html">
+						<a class="a b " href="upload.php">
 							<l1 style="color:white;">Create Exam</l1>
 						</a>
-						<l1 class="show">Leaderboard<div class="imgdiv"><img class=arrow src="arrow.png"></div>
-							<div class="list-container">
-								<ul class="hidden-list">
-									<div class="anchor-list">
-										<a class="a" href="leaderboard/html.html">
-											<li>Html</li>
-										</a>
-									</div>
-									<div class="anchor-list">
-										<a class="a" href="leaderboard/css.html">
-											<li>Css</li>
-										</a>
-									</div>
-									<div class="anchor-list">
-										<a class="a" href="leaderboard/javascript.html">
-											<li>Javascript</li>
-										</a>
-									</div>
-									<div class="anchor-list">
-										<a class="a" href="leaderboard/php.html">
-											<li>Php</li>
-										</a>
-									</div>
-									<div class="anchor-list">
-										<a class="a" href="leaderboard/MySql.html">
-											<li>MySql</li>
-										</a>
-										<a class="a" href="leaderboard/MySql.html">
-											<li style="color:white;">Score-sheet</li>
-										</a>
-									</div>
-								</ul>
-							</div>
-						</l1>
+						<a class="a b" href="score-sheet.php">
+							<l1>Score-sheet</li>
+						</a>
 					</ul>
-				</div>
 			</div>
-			<div class="body-container">
-				<div class="container1">
-					<h3 class="text-name float">Welcome, David</h3>
-				</div>
-				<form>
-					<div class="question">
-						<input type="text" name="" placeholder="course-id" id="cId">
-						<input type="text" name="" placeholder="course-name" id="cNm">
+		</div>
+		<div class="body-container">
+			<div class="container1">
+				<h3 class="text-name float">Welcome,
+					<?php echo strtoupper($_SESSION['user']) ?>
+				</h3>
+			</div>
+			<form>
+				<div class="question">
+					<input type="text" name="" placeholder="course-id" id="cId">
+					<input type="text" name="" placeholder="course-name" id="cNm">
 
-					</div>
-					<input type="text" name="" placeholder="question" id="question">
-					<input type="text" name="" placeholder="Answer" id="input1">
-					<input type="text" name="" placeholder="2nd Option" id="input2">
-					<input type="text" name="" placeholder="3rd Option" id="input3">
-					<input type="text" name="" placeholder="4th Option" id="input4">
-				</form>
-				<input class="submit mg-l" type="submit" id=submit value="update">
-			</div>
+				</div>
+				<input type="text" name="" placeholder="question" id="question">
+				<input type="text" name="" placeholder="Answer" id="input1">
+				<input type="text" name="" placeholder="2nd Option" id="input2">
+				<input type="text" name="" placeholder="3rd Option" id="input3">
+				<input type="text" name="" placeholder="4th Option" id="input4">
+			</form>
+			<input class="submit mg-l" type="submit" id=submit value="update">
+		</div>
 		</div>
 		<div class="aside-container">
 			<div class="img-holder">
-				<img src="../../sample.png" class=profile alt="student profile picture">
+				<?php echo strtoupper($_SESSION['user'][0]) ?>
 			</div>
 			<div class="menu-container">
 				<div class="menu-list">
-					<a href="../settings/password.html">password</a>
+					<a href="../settings/password.php">password</a>
 				</div>
 				<!-- <div class="menu-list">
 					<a href="../settings/picture.html">picture</a>
 				</div> -->
 				<div class="menu-list">
-					<a href="../settings/username.html">username</a>
+					<a href="../settings/username.php">username</a>
 				</div>
 			</div>
 		</div>

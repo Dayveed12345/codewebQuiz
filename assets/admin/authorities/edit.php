@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!$_SESSION['user'] && !$_SESSION['pass']) {
+	header('location:../../../index.html');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,46 +24,15 @@
 				<div class="logo">Logo</div>
 				<div class="nav">
 					<ul class="nav-list">
-						<a class="a b show" href="view.html">
-							<l1>Home</l1>
+						<a class="a b " href="view.php">
+							<l1>View Questions</l1>
 						</a>
-						<a class="a b show" href="upload.html">
+						<a class="a b " href="upload.php">
 							<l1>Create Exam</l1>
 						</a>
-						<l1 class="show">Leaderboard<div class="imgdiv"><img class=arrow src="arrow.png"></div>
-							<div class="list-container">
-								<ul class="hidden-list">
-									<div class="anchor-list">
-										<a class="a" href="leaderboard/html.html">
-											<li>Html</li>
-										</a>
-									</div>
-									<div class="anchor-list">
-										<a class="a" href="leaderboard/css.html">
-											<li>Css</li>
-										</a>
-									</div>
-									<div class="anchor-list">
-										<a class="a" href="leaderboard/javascript.html">
-											<li>Javascript</li>
-										</a>
-									</div>
-									<div class="anchor-list">
-										<a class="a" href="leaderboard/php.html">
-											<li>Php</li>
-										</a>
-									</div>
-									<div class="anchor-list">
-										<a class="a" href="leaderboard/MySql.html">
-											<li>MySql</li>
-										</a>
-										<a class="a" href="leaderboard/MySql.html">
-											<li style="color:white;">Score-sheet</li>
-										</a>
-									</div>
-								</ul>
-							</div>
-						</l1>
+						<a class="a b" href="score-sheet.php">
+							<l1>Score-sheet</li>
+						</a>
 					</ul>
 				</div>
 			</div>
@@ -130,13 +105,10 @@
 			</div>
 			<div class="menu-container">
 				<div class="menu-list">
-					<a href="../settings/password.html">password</a>
+					<a href="../settings/password.php">password</a>
 				</div>
 				<div class="menu-list">
-					<a href="../settings/picture.html">picture</a>
-				</div>
-				<div class="menu-list">
-					<a href="../settings/username.html">username</a>
+					<a href="../settings/username.php">username</a>
 				</div>
 			</div>
 		</div>

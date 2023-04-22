@@ -14,7 +14,7 @@ include 'functions.php';
 	<link rel="stylesheet" href="../style/responsive/exam.css">
 </head>
 
-<body>
+<body >
 	<main>
 		<!---MAIN SECTION-->
 		<div class="aside-container">

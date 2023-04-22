@@ -1,0 +1,15 @@
+.img-holder{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size:150px;
+	color:white;
+	height:180px;
+	width:180px;
+	border-radius: 50%;
+	margin-left:-10px;
+	text-shadow: 2px 2px 7px black;
+	background-color: whitesmoke;
+	margin-top:30px;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+}

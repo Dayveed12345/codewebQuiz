@@ -29,6 +29,14 @@ class Quiz
 		$this->prepare->execute([$a, $b, $c, $d, $e]);
 		return $this->prepare;
 	}
+	public function select_student($c, $d,$e)
+	{
+		$this->processQuery = new processQuery();
+		$this->execute = $this->processQuery->query("SELECT * FROM `scoresheet` WHERE firstName= ? and lastName= ? and course_id=?");
+		$this->execute->execute([$c, $d,$e]);
+		return $this->execute->rowCount();
+		
+	}
 }
 
 ?>

@@ -8,7 +8,11 @@ include "functions.php";
 	$email=$_POST['input5'];
 	$quiz=new Quiz();
 	$select_result=$quiz->select($courseID,$courseName);
-	if($select_result>0){
+	$check_student=$quiz->select_student($firstName,$lastName,$courseID);
+	if($check_student>0){
+		echo 2;
+	}else{
+		if($select_result>0){
 		$_SESSION['fn']=$firstName;
 		$_SESSION['ln']=$lastName;
 		$_SESSION['cID']=$courseID;
@@ -18,4 +22,6 @@ include "functions.php";
 	}else{
 		echo 0;
 	}
-?>
+
+	}
+	?>

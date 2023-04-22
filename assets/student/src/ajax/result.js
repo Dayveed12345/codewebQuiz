@@ -6,11 +6,11 @@ $(function () {
 		var remain1=total1-count1;
 		var remain2;
 		if(remain1==0){
-			remain2=' do your want to submit?';
+			remain2=' do you want to submit?';
 		}else{
 			remain2=`You have ${remain1} more to go, do your want to submit?`;
 		}
-		if (confirm(remain2) === true) {
+		if(confirm(remain2)===true){
 			var count = $('.input1:checked').length;
 			var Percentage = $('.input1').length;
 			var total = (count / Percentage) * 100;
@@ -19,12 +19,17 @@ $(function () {
 				type: "POST",
 				url: "../backend/logout.php",
 				data: { fixed: fixed },
+				beforeSend:function(){
+					$('#result').attr('disabled', true);
+				},
 				success: function (response) {
 					if(response==200){
+						$('#result').attr('disabled', true);
 						alert("submitted, your result will be sent to you via your email anytime soon");
 						window.location.href = '../exam/index.html'
 					}else{
-						alert(response);
+						alert("An error occured");
+						$('#result').attr('disabled', false);
 					}
 					
 				}, error: function () {
@@ -32,9 +37,8 @@ $(function () {
 				}
 			});
 			// alert(fixed);
-		}
-		else {
-			// alert("continue");
+		}else{
+			alert("continue....the exam")
 		}
 	})
 	document.addEventListener('visibilitychange', function () {

@@ -1,0 +1,28 @@
+.paragraph_err{
+	display:none;
+	color:red;
+	font-size:10px;
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-weight:bolder;
+}
+.paragraph_success{
+	display:none;
+	color:green;
+	font-size:10px;
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-weight:bolder;
+}
+.para_err{
+	display:none;
+	color:red;
+	font-size:10px;
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-weight:bolder;
+}
+.para_success{
+	display:none;
+	color:green;
+	font-size:10px;
+	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-weight:bolder;
+}

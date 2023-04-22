@@ -13,6 +13,9 @@ if (isset($_POST['fixed'])) {
 	$courseId=$_SESSION['cID'];
 	$courseName=$_SESSION['cn'];
 	$date = date('D-M-Y');
+	if(empty($firstname)&&empty($lastname)&&empty($courseId)&&empty($courseName)){
+		echo 1;
+	}else{
 	$insert = new Quiz();
 	$result = $insert->insert_score($mess,$courseName,$date,$courseId,$firstname,$lastname);
 	$upper=strtoupper($courseName);
@@ -32,28 +35,29 @@ if (isset($_POST['fixed'])) {
 	<h2 style=margin-top:20px;><span style='color:green;font-weight:bolder;'>you scored $mess</span></h2>
 	</div>
 	";
-		$mail = new PHPMailer(true);
-		$mail->isSMTP();
-		$mail->Host = 'smtp.gmail.com';
-		$mail->SMTPAuth = true;
-		$mail->Username = 'dayveed1814@gmail.com';
-		$mail->Password = 'funuyohoolcabkvk';
-		$mail->SMTPSecure = 'ssl';
-		$mail->Port = 465;
-		$mail->setFrom('dayveed1814@gmail.com');
-		$mail->addAddress($_SESSION['email']);
-		$mail->isHTML(true);
-		$mail->Subject = 'CodeWeb Student Result';
-		$mail->Body = $message;
-		$mail->send();
-		// echo $ex->getMessage();
+		// $mail = new PHPMailer(true);
+		// $mail->isSMTP();
+		// $mail->Host = 'smtp.gmail.com';
+		// $mail->SMTPAuth = true;
+		// $mail->Username = 'dayveed1814@gmail.com';
+		// $mail->Password = 'funuyohoolcabkvk';
+		// $mail->SMTPSecure = 'ssl';
+		// $mail->Port = 465;
+		// $mail->setFrom('dayveed1814@gmail.com');
+		// $mail->addAddress($_SESSION['email']);
+		// $mail->isHTML(true);
+		// $mail->Subject = 'CodeWeb Student Result';
+		// $mail->Body = $message;
+		// $mail->send();
+	echo 200;
 	session_unset();
 	session_destroy();
-	echo 200;
 	die();
-	}else{
+	}
+	else{
 		echo "It wasnt able to send  your score through Email and error occured";
 	}
+}
 	
 }else{
 	echo "something is wrong with the server you do not have a score contact the Admins";
